@@ -32,9 +32,9 @@ int main(){
             printf("You are not eligible for MIT\n");
         }
     }else if ((FSC<=70 && FSC>=60) && (NTS >50)){
-        printf("You are eligible for a seat in IT,CHEMICAL,COMPUTER in MIT only\n");    
+        printf("You are eligible for a seat in IT,CHEMICAL,COMPUTER in MIT\n");    
     } else if((FSC<60 && FSC>=50) && (NTS > 50)){
-        printf("You are eligible for a seat in CHEMICAL,COMPUTER in MIT only\n");
+        printf("You are eligible for a seat in CHEMICAL,COMPUTER in MIT\n");
     }else if((FSC<50 && FSC>40) && (NTS > 50) ){
         printf("You are eligible for a seat in COMPUTER in MIT only\n");
     }else{
