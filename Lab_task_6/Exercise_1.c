@@ -7,7 +7,7 @@ int main(){
     int i = 1;
     int fact = 1;
 
-    while(i < a){
+    while(i <= a){
         fact = fact * i;
         i++;     
     }
