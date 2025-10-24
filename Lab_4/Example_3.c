@@ -1,5 +1,5 @@
 #include <stdio.h>
-int main( ){
+int main(){
     int var1, var2;
     printf("Input the value of var1: ");
     scanf("%d", &var1);
