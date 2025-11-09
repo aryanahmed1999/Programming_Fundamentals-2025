@@ -33,6 +33,7 @@ int fastCash(struct User *u);
 int loadUsers(struct User users[]);
 void saveUsers(struct User users[], int count);
 int cashWithdrawal(struct User *u);
+void deposit(struct User *u);
 
 int main() {
     int option;
@@ -65,7 +66,6 @@ int main() {
 void stripNewline(char *str) {
     str[strcspn(str, "\n")] = '\0';
 }
-
 
 void xorCipher(char *str) {
     for (int i = 0; str[i] != '\0'; i++) {
@@ -218,7 +218,7 @@ void printOptions(struct User *u) {
             cashWithdrawal(u);
             break;
         case 4:
-          //  deposit(u);
+            deposit(u);
             break;
         default:
             printf("Please Select a Valid Operation!\n");
@@ -265,6 +265,32 @@ int fastCash(struct User *u) {
     }
 
     return 0;
+}
+
+// Deposit money
+void deposit(struct User *u) {
+    int amount;
+    printf("\nEnter amount to deposit: ");
+    scanf("%d", &amount);
+
+    if (amount <= 0) {
+        printf("Invalid amount.\n");
+        return;
+    }
+
+    u->balance += amount;
+
+    // update user in array
+    for (int i = 0; i < noOfUsers; i++) {
+        if (strcmp(users[i].name, u->name) == 0 &&
+            strcmp(users[i].password, u->password) == 0) {
+            users[i].balance = u->balance;
+            break;
+        }
+    }
+
+    saveUsers(users, noOfUsers);
+    printf("\nDeposit Successful! New Balance: %d\n", u->balance);
 }
 
 // Load users from file
